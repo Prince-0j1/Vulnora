@@ -1,141 +1,271 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=190&color=0:101020,45:48205f,100:ed4b76&text=VULNORA&fontColor=ffffff&fontSize=58&fontAlignY=38&desc=Secure%20Coding%20Review%20%7C%20Static%20Source%20Inspection&descAlignY=60&descSize=14" width="100%" alt="Vulnora banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:07111f,35:123b62,70:087e8b,100:19c6d2&text=VULNORA&fontColor=ffffff&fontSize=60&fontAlignY=38&desc=SECURE%20CODING%20REVIEW%20%7C%20CODEALPHA%20CYBER%20SECURITY&descAlignY=60&descSize=14&animation=fadeIn" width="100%" alt="VULNORA animated banner">
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-Web%20Dashboard-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
-[![Security](https://img.shields.io/badge/Focus-Application%20Security-C83D65?style=for-the-badge)](#-responsible-use)
-[![Reports](https://img.shields.io/badge/Output-JSON-64748b?style=for-the-badge&logo=json)](#-features)
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=3000&pause=900&color=19C6D2&center=true&vCenter=true&width=650&lines=Find+Weaknesses+Before+Attackers+Do.;Scan.+Identify.+Remediate.;Write+Code.+Build+Security." alt="Typing animation">
 
-**Find weaknesses. Strengthen code.**  
-A lightweight rule-based source inspection tool with findings and remediation guidance.
+<br>
 
-[Features](#-features) · [Detection flow](#-how-it-works) · [Setup](#-getting-started) · [Test samples](#-quick-test) · [Limitations](#-scope--limitations)
+<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/Flask-Web_Dashboard-222222?style=for-the-badge&logo=flask">
+<img src="https://img.shields.io/badge/Secure_Coding-Static_Analysis-00A98F?style=for-the-badge">
+<img src="https://img.shields.io/badge/CodeAlpha-Cyber_Security-00A98F?style=for-the-badge">
+
+**SCAN · DETECT · ANALYZE · REMEDIATE**
+
+*A Python-based source-code security review tool designed to identify potentially vulnerable coding patterns and provide remediation guidance.*
+
+<br>
+
+[Overview](#-01--project-overview) · [Features](#-02--key-features) · [Architecture](#-03--system-architecture) · [Installation](#-04--installation) · [Testing](#-05--testing)
 
 </div>
 
 ---
 
-## ◈ What is Vulnora?
+## ◈ 01 — Project Overview
 
-Vulnora is a small Flask application that scans an uploaded source file against a set of implemented pattern-based checks. It reports matching lines, assigns a severity label, and provides remediation guidance to support a manual secure-code review.
+**VULNORA** is a Python-based secure coding review application designed to inspect source code for potentially insecure coding patterns.
 
-> **Project context:** Developed for Task 3 — Secure Coding Review, as part of the CodeAlpha Cyber Security Internship.
+It uses predefined security checks to identify suspicious patterns associated with common application vulnerabilities and presents findings through a Flask dashboard.
 
-## ✦ Features
+The application is intended to help developers understand common coding weaknesses and learn how to improve application security.
 
-| Capability | What it does |
-|---|---|
-| Source upload | Accepts supported source files defined by the app's allowlist. |
-| Pattern-based checks | Looks for selected risky coding patterns using regular expressions and simple heuristics. |
-| Findings | Reports a finding title, severity, line number, matched snippet, and suggested fix. |
-| Triage summary | Counts high, medium, and low findings for the scan. |
-| Sample files | Provides intentionally vulnerable Python and PHP examples for local testing. |
-| JSON report | Saves the latest scan as `last_report.json` and provides a download route. |
-| Local web UI | Flask dashboard at `127.0.0.1:5003`. |
+> **Internship:** CodeAlpha Cyber Security Internship
+> **Assigned Task:** Task 3 — Secure Coding Review.
 
-## 🧪 How it works
+### 🎯 Project Objective
+
+To understand how insecure coding practices can introduce application vulnerabilities and how source-code inspection can help identify and remediate them.
+
+**Important:** VULNORA uses rule-based pattern detection. It is not a complete static application security testing (SAST) engine, and its findings require manual validation.
+
+---
+
+## ✦ 02 — Key Features
+
+<div align="center">
+
+| Feature                     | Description                                                     |
+| --------------------------- | --------------------------------------------------------------- |
+| 🔍 Source Code Scanning     | Inspects submitted source code using predefined security rules. |
+| 💉 SQL Injection Checks     | Identifies potentially unsafe SQL construction patterns.        |
+| 🌐 XSS Checks               | Looks for potentially unsafe output-handling patterns.          |
+| 🔐 Hardcoded Secret Checks  | Searches for suspicious hardcoded credentials or secrets.       |
+| ⚙️ Command Injection Checks | Identifies potentially unsafe command-execution patterns.       |
+| 🚦 Severity Classification  | Organizes findings according to assigned severity.              |
+| 🛠️ Remediation Guidance    | Provides recommendations for addressing detected patterns.      |
+| 📄 JSON Reports             | Exports scan findings in JSON format.                           |
+
+</div>
+
+---
+
+## 🧬 03 — System Architecture
 
 ```mermaid
 flowchart TD
-    A[Select source file] --> B[Extension / size validation]
-    B --> C[Read source text]
-    C --> D[Apply configured pattern checks]
-    D --> E[Collect matching lines]
-    E --> F[Assign rule severity and remediation]
-    F --> G[Results dashboard]
-    F --> H[JSON report]
-    I[Developer review] --> J[Fix and retest manually]
+    A["👨‍💻 Developer"] --> B["📤 Submit Source Code"]
+    B --> C["🖥️ Flask Application"]
+    C --> D["🐍 Python Scanner"]
+    D --> E["🔍 Rule-Based Analysis"]
+    E --> F["⚠️ Potential Vulnerability Detection"]
+    F --> G["🚦 Severity Classification"]
+    G --> H["🛠️ Remediation Guidance"]
+    G --> I["📊 Results Dashboard"]
+    I --> J["📄 JSON Report Export"]
+
+    style A fill:#102A43,stroke:#38BDF8,color:#FFFFFF
+    style B fill:#123B62,stroke:#60A5FA,color:#FFFFFF
+    style C fill:#164E63,stroke:#22D3EE,color:#FFFFFF
+    style D fill:#1E3A8A,stroke:#60A5FA,color:#FFFFFF
+    style E fill:#7F1D1D,stroke:#EF4444,color:#FFFFFF
+    style G fill:#713F12,stroke:#FACC15,color:#FFFFFF
+    style I fill:#064E3B,stroke:#34D399,color:#FFFFFF
 ```
 
-1. A source file is uploaded through the dashboard.
-2. The app validates the file type and reads its text.
-3. The scanner checks lines against its configured regular-expression rules and a small number of heuristics.
-4. Matching patterns become findings with severity labels and remediation suggestions.
-5. The results page summarizes findings and allows a JSON report download.
+### Scanning Workflow
 
-## 🖥️ Getting started
+| Stage | Component      | Responsibility                              |
+| ----- | -------------- | ------------------------------------------- |
+| 01    | Source Code    | Receives the code submitted for review.     |
+| 02    | Flask          | Handles the web application workflow.       |
+| 03    | Python Scanner | Runs predefined security checks.            |
+| 04    | Rule Engine    | Searches for potentially insecure patterns. |
+| 05    | Classification | Assigns severity to findings.               |
+| 06    | Remediation    | Provides suggested improvements.            |
+| 07    | Report         | Displays and exports scan results.          |
+
+---
+
+## 🧰 04 — Technology Stack
+
+| Technology | Purpose                           |
+| ---------- | --------------------------------- |
+| Python     | Scanner logic and security checks |
+| Flask      | Web application backend           |
+| HTML       | Dashboard structure               |
+| CSS        | User interface styling            |
+| JavaScript | Frontend interactions             |
+| JSON       | Scan report export                |
+
+---
+
+## ⚡ 05 — Installation
 
 ### Requirements
 
-- Python 3.10 or newer recommended.
-- Flask (installed from `requirements.txt`).
-- No database or external scanning service is required for the included local checks.
+* Python 3.10 or newer recommended.
+* Git.
+* Dependencies listed in `requirements.txt`.
 
 ### Windows
 
 ```powershell
-git clone https://github.com/<your-username>/Vulnora.git
+git clone https://github.com/Prince-0j1/Vulnora.git
 cd Vulnora
+
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
+
 python -m pip install --upgrade pip
 pip install -r requirements.txt
+
 python app.py
 ```
-
-Or double-click `run_windows.bat`.
-
-Open **http://127.0.0.1:5003**.
 
 ### Linux / macOS
 
 ```bash
+git clone https://github.com/Prince-0j1/Vulnora.git
+cd Vulnora
+
 python3 -m venv .venv
 source .venv/bin/activate
+
+python -m pip install --upgrade pip
 pip install -r requirements.txt
+
 python app.py
 ```
 
-## 🔬 Quick test
+Open the local URL printed by the Flask application in your terminal.
 
-1. Open the dashboard at `http://127.0.0.1:5003`.
-2. Download the provided vulnerable Python sample and scan it.
-3. Repeat with the vulnerable PHP sample.
-4. Review each finding's title, severity, line, snippet, and remediation text.
-5. Download the JSON report and open it in a text editor.
-6. Modify a copy of a sample to remove a flagged pattern and scan again. A finding disappearing only shows that the matching pattern is no longer present; it does not prove the code is secure.
+---
 
-**Use the supplied vulnerable samples only as local training material. Do not deploy them.**
+## 🧪 06 — Testing
 
-## 📁 Project structure
+### Basic Scanner Test
 
-```text
-Vulnora/
-├── app.py                 # Flask routes, upload handling, pattern rules, report creation
-├── requirements.txt       # Flask dependency
-├── last_report.json       # Created after a scan
-├── samples/
-│   ├── vulnerable_app.py  # Intentionally vulnerable Python training sample
-│   └── vulnerable_login.php # Intentionally vulnerable PHP training sample
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   └── results.html
-├── run_windows.bat
-└── run_linux_mac.sh
+1. Start VULNORA.
+2. Open the local Flask dashboard.
+3. Submit a small source-code sample.
+4. Run the scan.
+5. Review the reported findings.
+6. Check severity classifications.
+7. Review the remediation suggestions.
+8. Export the JSON report.
+
+### Example Test Patterns
+
+The following snippets are intentionally insecure examples for testing a scanner in a controlled environment.
+
+**Example 1 — Potential SQL Injection**
+
+```python
+query = "SELECT * FROM users WHERE name = '" + username + "'"
 ```
 
-## 📄 Report contents
+**Example 2 — Potential Command Injection**
 
-The JSON report includes the scanned filename, scan timestamp, source line count, finding records, and a severity-count summary. Each finding can include a title, severity, line number, short code snippet, and remediation guidance.
+```python
+import os
+os.system("ping " + user_input)
+```
 
-## ⚠️ Scope & limitations
+**Example 3 — Hardcoded Credential**
 
-- Vulnora is a **rule-based educational scanner**, not a comprehensive SAST product or a substitute for a professional security review.
-- Pattern matching can produce false positives and false negatives. Code context, data flow, framework behavior, and runtime configuration may not be understood by these checks.
-- A clean scan does not mean that the application is secure. Findings must be manually validated and tested.
-- The tool analyzes uploaded source text; it does not execute the uploaded code. Keep it that way when testing untrusted samples.
-- Do not upload confidential, proprietary, or production source code to a shared/public instance. This project is intended for local use.
+```python
+password = "admin123"
+```
 
-## 🧑‍💻 Built for learning
+**Expected result:** If the corresponding rules are implemented in the scanner, these patterns should produce relevant findings.
 
-Topics explored: secure coding, common vulnerability patterns, static source inspection, severity triage, remediation advice, and security reporting.
+> Detection depends on the rules implemented by the current project version. These examples are not proof that every vulnerability will be detected.
+
+---
+
+## 📊 07 — Understanding Scan Results
+
+| Finding Category     | What to Investigate                                               |
+| -------------------- | ----------------------------------------------------------------- |
+| SQL Injection        | Unsafe SQL query construction and missing parameterization.       |
+| Cross-Site Scripting | Unescaped or unsafe handling of untrusted output.                 |
+| Hardcoded Secrets    | Credentials, API keys, or sensitive values stored in source code. |
+| Command Injection    | Unsafe use of external input in operating-system commands.        |
+
+### Remediation Principles
+
+* Use parameterized SQL queries.
+* Apply context-appropriate output encoding.
+* Store secrets in secure configuration or secret-management systems.
+* Avoid passing untrusted input directly to shell commands.
+* Validate and sanitize input according to the application's requirements.
+
+---
+
+## ⚠️ 08 — Scope & Limitations
+
+VULNORA is an educational rule-based secure coding review tool.
+
+* Pattern matching cannot understand every program's execution context.
+* False positives and false negatives are possible.
+* Complex data flows may not be detected.
+* A reported pattern is not automatically an exploitable vulnerability.
+* Absence of findings does not prove that source code is secure.
+* Findings should be manually validated.
+* It is not a replacement for professional SAST, DAST, code review, or penetration testing.
+
+---
+
+## 🎓 09 — Learning Outcomes
+
+* Secure coding principles.
+* Common application security weaknesses.
+* SQL injection and XSS concepts.
+* Hardcoded secret detection.
+* Command injection risks.
+* Source-code security inspection.
+* Severity classification.
+* Vulnerability remediation.
+* Python and Flask application development.
+
+---
+
+## 👨‍💻 Developer
 
 <div align="center">
 
-**VULNORA** · Make secure code the default.
+### PRINCE KOTADIYA
 
-<sub>CodeAlpha Cyber Security Internship · Secure Coding Review</sub>
+**Cyber Security Student | Python Developer**
+
+Built as part of the **CodeAlpha Cyber Security Internship**.
+
+<br>
+
+**VULNORA**
+
+*Find weaknesses before attackers do.*
+
+<sub>SCAN · DETECT · ANALYZE · REMEDIATE</sub>
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:19c6d2,50:123b62,100:07111f&height=110&section=footer" width="100%" alt="VULNORA footer">
 
 </div>
